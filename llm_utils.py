@@ -4,7 +4,7 @@ import json
 from typing import Dict, List, Any
 from config.settings import AIPIPE_API_KEY
 
-async def generate_code(brief: str, attachments: List[Dict] = None) -> Dict[str, str]:
+async def generate_code(brief: str, attachments: List[Dict] = None, checks: List[str] = None) -> Dict[str, str]:
     """Generate code files based on the brief and attachments using aipipe API"""
     
     # Prepare the prompt for code generation
@@ -17,6 +17,9 @@ async def generate_code(brief: str, attachments: List[Dict] = None) -> Dict[str,
     3. Make it responsive and user-friendly
     4. Include proper error handling
     5. Add comments explaining the code
+    
+    Evaluation Criteria:
+    {checks if checks else "Standard web application requirements"}
     
     If there are attachments, analyze them and incorporate relevant functionality.
     
@@ -88,11 +91,14 @@ async def generate_code(brief: str, attachments: List[Dict] = None) -> Dict[str,
             "README.md": create_default_readme(brief)
         }
 
-async def modify_code(modification_request: str, repo_name: str) -> Dict[str, str]:
+async def modify_code(modification_request: str, repo_name: str, checks: List[str] = None) -> Dict[str, str]:
     """Modify existing code based on modification request"""
     
     prompt = f"""
     Modify the existing code in repository '{repo_name}' based on this request: {modification_request}
+    
+    Evaluation Criteria:
+    {checks if checks else "Maintain existing functionality while adding new features"}
     
     Return the updated code as a JSON object with file names as keys and file contents as values.
     """

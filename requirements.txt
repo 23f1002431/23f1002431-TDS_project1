@@ -5,3 +5,6 @@ aiohttp==3.9.1
 python-multipart==0.0.6
 python-dotenv==1.0.0
 httpx==0.25.2
+gunicorn==21.2.0
+pyGithub==1.55.1
+aipipe==1.0.0
