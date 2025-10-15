@@ -1,0 +1,5 @@
+import os
+
+AIPIPE_API_KEY = os.getenv("AIPIPE_API_KEY")
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+EXPECTED_SECRET = os.getenv("EXPECTED_SECRET")
